@@ -1,16 +1,16 @@
-const API_URL = 'https://notes-api.dicoding.dev/v2/';
+const API_URL = "https://notes-api.dicoding.dev/v2/";
 
 export async function fetchNotes() {
   const response = await fetch(`${API_URL}notes`);
   const data = await response.json();
-  return data.notes;
+  return data.data;
 }
 
 export async function createNote(note) {
   const response = await fetch(`${API_URL}notes`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(note),
   });
@@ -19,7 +19,7 @@ export async function createNote(note) {
 
 export async function deleteNote(noteId) {
   const response = await fetch(`${API_URL}notes/${noteId}`, {
-    method: 'DELETE',
+    method: "DELETE",
   });
   return response.json();
 }
